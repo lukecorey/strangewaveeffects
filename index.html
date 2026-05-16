@@ -38,7 +38,10 @@
       color: var(--color-text);
       background-color: var(--color-bg);
       overflow-x: hidden;
+      transition: background-color 0.35s ease;
     }
+    body.logo-active { background-color: #fcbeff; }
+
     p { text-wrap: pretty; }
     h1 { text-wrap: balance; }
     a { color: inherit; text-decoration: none; transition: color var(--transition); }
@@ -159,6 +162,18 @@
     }
     .footer-links a:hover { color: var(--color-accent); }
 
+    .site-logo {
+      max-width: clamp(280px, 90vw, 1100px);
+      margin-bottom: var(--space-4);
+      cursor: pointer;
+    }
+    .site-logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
+
     @media (max-width: 640px) {
       main { padding: var(--space-12) var(--space-4); justify-content: center; }
       footer { padding: var(--space-4) var(--space-4); }
@@ -169,24 +184,6 @@
 
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; }
-    }
-
-    .site-logo {
-      max-width: clamp(280px, 90vw, 1100px);
-      margin-bottom: var(--space-4);
-    }
-    .site-logo img,
-    .site-logo svg {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    body {
-      transition: background-color 0.35s ease;
-    }
-    body.logo-active {
-      background-color: #beffef;
     }
   </style>
 </head>
@@ -203,8 +200,8 @@
 
       <p class="hero-body">Effects Pedals Handmade In Newcastle, NSW</p>
 
-      <div class="site-logo" role="img" aria-label="Strangewave Effects">
-        <svg class="logo-svg" style="cursor:pointer;display:block;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" viewBox="0 0 787.5 299.999988" height="auto" preserveAspectRatio="xMidYMid meet"><defs><g/><clipPath id="1e6a1349d9"><path d="M 0 0.09375 L 787 0.09375 L 787 180 L 0 180 Z M 0 0.09375 " clip-rule="nonzero"/></clipPath><clipPath id="17808fadc0"><rect x="0" width="787" y="0" height="180"/></clipPath><clipPath id="a2141c97eb"><path d="M 0 125 L 441 125 L 441 299.902344 L 0 299.902344 Z M 0 125 " clip-rule="nonzero"/></clipPath><clipPath id="de6f109ccd"><rect x="0" width="441" y="0" height="175"/></clipPath></defs><g clip-path="url(#1e6a1349d9)"><g transform="matrix(1, 0, 0, 1, 0, 0.000000000000029879)"><g clip-path="url(#17808fadc0)"><g fill="#ffffff" fill-opacity="1"><g transform="translate(4.993211, 170.387358)"><g><path d="M 85.125 0 L 85.125 -123.390625 L 0 -123.390625 L 0 -170.296875 L 227.109375 -170.296875 L 227.109375 -123.390625 L 142.328125 -123.390625 L 142.328125 0 Z M 85.125 0 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(199.527663, 170.387358)"><g><path d="M 0 0 L 0 -170.296875 L 178.640625 -170.296875 L 178.640625 -123.390625 L 57.21875 -123.390625 L 57.21875 -106.53125 L 171.4375 -106.53125 L 171.4375 -63.578125 L 57.21875 -63.578125 L 57.21875 -46.90625 L 181.671875 -46.90625 L 181.671875 0 Z M 0 0 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(357.604674, 170.387358)"><g><path d="M 81.328125 0 L 81.328125 -123.390625 L 0 -123.390625 L 0 -170.296875 L 219.703125 -170.296875 L 219.703125 -123.390625 L 138.734375 -123.390625 L 138.734375 0 Z M 81.328125 0 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(544.853757, 170.387358)"><g><path d="M 0 0 L 0 -170.296875 L 57.21875 -170.296875 L 57.21875 0 Z M 0 0 "/></g></g></g><g fill="#ffffff" fill-opacity="1"><g transform="translate(587.157233, 170.387358)"><g><path d="M 0 0 L 0 -170.296875 L 59.265625 -170.296875 L 119.46875 -79.765625 L 179.484375 -170.296875 L 238.765625 -170.296875 L 238.765625 0 L 184.40625 0 L 184.40625 -93.46875 L 135.140625 -20.953125 L 103.421875 -20.953125 L 54.34375 -93.46875 L 54.34375 0 Z M 0 0 "/></g></g></g><g clip-path="url(#a2141c97eb)"><g transform="matrix(1, 0, 0, 1, 0, 125.005829)"><g clip-path="url(#de6f109ccd)"><g fill="#ea3e0d" fill-opacity="1"><g transform="translate(0.927551, 170.38615)"><g><path d="M 0 0 L 0 -170.296875 L 171.25 -170.296875 L 171.25 -124.21875 L 56.859375 -124.21875 L 56.859375 -106.53125 L 163.140625 -106.53125 L 163.140625 -63.578125 L 56.859375 -63.578125 L 56.859375 -45.25 L 173.296875 -45.25 L 173.296875 0 Z M 0 0 "/></g></g></g><g fill="#ea3e0d" fill-opacity="1"><g transform="translate(150.070865, 170.38615)"><g><path d="M 0 0 L 0 -170.296875 L 173.296875 -170.296875 L 173.296875 -124.21875 L 56.859375 -124.21875 L 56.859375 -106.53125 L 163.140625 -106.53125 L 163.140625 -63.578125 L 56.859375 -63.578125 L 56.859375 -45.25 L 173.296875 -45.25 L 173.296875 0 Z M 0 0 "/></g></g></g><g fill="#ea3e0d" fill-opacity="1"><g transform="translate(299.214179, 170.38615)"><g><path d="M 0 0 L 0 -170.296875 L 173.296875 -170.296875 L 173.296875 -124.21875 L 56.859375 -124.21875 L 56.859375 -106.53125 L 163.140625 -106.53125 L 163.140625 -63.578125 L 56.859375 -63.578125 L 56.859375 -45.25 L 173.296875 -45.25 L 173.296875 0 Z M 0 0 "/></g></g></g></g></g></g></svg>
+      <div class="site-logo" id="site-logo" role="img" aria-label="Strangewave Effects">
+        <img src="images/sw_logo.svg" alt="Strangewave Effects" />
       </div>
 
       <p class="tagline">Coming Soon</p>
@@ -236,9 +233,7 @@
       pointer.x = x; pointer.y = y;
       hasPointer = true;
     }
-    function clearPointer() {
-      hasPointer = false;
-    }
+    function clearPointer() { hasPointer = false; }
 
     window.addEventListener('mousemove', e => setPointer(e.clientX, e.clientY));
     window.addEventListener('mouseleave', clearPointer);
@@ -332,42 +327,15 @@
 
     draw();
 
-    const logoSvg = document.querySelector('.logo-svg');
+    // Logo hover/tap — triggers on full image bounds
+    const logo = document.getElementById('site-logo');
 
-    function isOrangePath(el) {
-      let node = el;
-      while (node && node !== logoSvg) {
-        const fill = (node.getAttribute && node.getAttribute('fill') || '').toLowerCase();
-        if (fill === '#ea3e0d') return true;
-        node = node.parentNode;
-      }
-      return false;
-    }
+    logo.addEventListener('mouseenter', () => document.body.classList.add('logo-active'));
+    logo.addEventListener('mouseleave', () => document.body.classList.remove('logo-active'));
 
-    if (logoSvg) {
-      logoSvg.addEventListener('mousemove', e => {
-        if (isOrangePath(e.target)) {
-          document.body.classList.add('logo-active');
-        } else {
-          document.body.classList.remove('logo-active');
-        }
-      });
-
-      logoSvg.addEventListener('mouseleave', () => {
-        document.body.classList.remove('logo-active');
-      });
-
-      logoSvg.addEventListener('touchstart', e => {
-        const touch = e.touches[0];
-        const el = document.elementFromPoint(touch.clientX, touch.clientY);
-        if (el && isOrangePath(el)) {
-          document.body.classList.add('logo-active');
-        }
-      }, { passive: true });
-
-      logoSvg.addEventListener('touchend', () => document.body.classList.remove('logo-active'));
-      logoSvg.addEventListener('touchcancel', () => document.body.classList.remove('logo-active'));
-    }
+    logo.addEventListener('touchstart', () => document.body.classList.add('logo-active'), { passive: true });
+    logo.addEventListener('touchend', () => document.body.classList.remove('logo-active'));
+    logo.addEventListener('touchcancel', () => document.body.classList.remove('logo-active'));
   </script>
 
 </body>
