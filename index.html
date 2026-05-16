@@ -38,9 +38,11 @@
       color: var(--color-text);
       background-color: var(--color-bg);
       overflow-x: hidden;
-      transition: background-color 0.35s ease;
+      transition: filter 0.35s ease;
     }
-    body.logo-active { background-color: #fcbeff; }
+    body.logo-active {
+      filter: invert(1);
+    }
 
     p { text-wrap: pretty; }
     h1 { text-wrap: balance; }
@@ -327,7 +329,7 @@
 
     draw();
 
-    // Logo hover/tap — triggers on full image bounds
+    // Logo hover/tap — inverts whole page on image bounds
     const logo = document.getElementById('site-logo');
 
     logo.addEventListener('mouseenter', () => document.body.classList.add('logo-active'));
