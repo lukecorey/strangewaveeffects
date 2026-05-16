@@ -31,17 +31,20 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    html {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      transition: filter 0.35s ease;
+    }
+    html.logo-active {
+      filter: invert(1);
+    }
     body {
       min-height: 100dvh;
       font-family: var(--font-body);
       color: var(--color-text);
       background-color: var(--color-bg);
       overflow-x: hidden;
-      transition: filter 0.35s ease;
-    }
-    body.logo-active {
-      filter: invert(1);
     }
 
     p { text-wrap: pretty; }
@@ -329,15 +332,15 @@
 
     draw();
 
-    // Logo hover/tap — inverts whole page on image bounds
+    // Logo hover/tap — inverts entire page including background
     const logo = document.getElementById('site-logo');
 
-    logo.addEventListener('mouseenter', () => document.body.classList.add('logo-active'));
-    logo.addEventListener('mouseleave', () => document.body.classList.remove('logo-active'));
+    logo.addEventListener('mouseenter', () => document.documentElement.classList.add('logo-active'));
+    logo.addEventListener('mouseleave', () => document.documentElement.classList.remove('logo-active'));
 
-    logo.addEventListener('touchstart', () => document.body.classList.add('logo-active'), { passive: true });
-    logo.addEventListener('touchend', () => document.body.classList.remove('logo-active'));
-    logo.addEventListener('touchcancel', () => document.body.classList.remove('logo-active'));
+    logo.addEventListener('touchstart', () => document.documentElement.classList.add('logo-active'), { passive: true });
+    logo.addEventListener('touchend', () => document.documentElement.classList.remove('logo-active'));
+    logo.addEventListener('touchcancel', () => document.documentElement.classList.remove('logo-active'));
   </script>
 
 </body>
