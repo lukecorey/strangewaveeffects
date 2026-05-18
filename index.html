@@ -41,10 +41,6 @@
       color: var(--color-text);
       background-color: var(--color-bg);
       overflow-x: hidden;
-      transition: background-color 0.35s ease;
-    }
-    html.logo-active body {
-      background-color: #ffffff;
     }
 
     p { text-wrap: pretty; }
@@ -283,6 +279,11 @@
       const H = canvas.height;
       ctx.clearRect(0, 0, W, H);
 
+      // Fade logo excite in/out
+      logoExcite += logoActive
+        ? (1 - logoExcite) * 0.25
+        : (0 - logoExcite) * 0.25;
+
       if (hasPointer) {
         smooth.x += (pointer.x - smooth.x) * 0.1;
         smooth.y += (pointer.y - smooth.y) * 0.1;
@@ -294,16 +295,28 @@
       const rows = Math.ceil(H / STEP) + 2;
       const PTS  = Math.ceil(W / 2) + 2;
 
+      // Extra speed and amplitude driven by logo excite
+      const excitePhaseOffset = logoExcite * Math.sin(phase * 5.3) * 18;
+      const exciteAmp = 1 + logoExcite * 14;
+      const exciteFreqMult = 1 + logoExcite * 2.2;
+
       for (let r = 0; r < rows; r++) {
         const baseY = r * STEP + ROW_H / 2;
-        const opacity = 0.18 + (r % 3) * 0.04;
+        const opacity = 0.18 + (r % 3) * 0.04 + logoExcite * 0.1;
         ctx.strokeStyle = `rgba(234,59,1,${opacity})`;
-        ctx.lineWidth = 0.9;
+        ctx.lineWidth = 0.9 + logoExcite * 0.6;
         ctx.beginPath();
 
         for (let i = 0; i <= PTS; i++) {
           const x = (i / PTS) * W;
-          let y = baseY + Math.sin(x * FREQ + phase + r * 0.55) * BASE_AMP;
+
+          // Base wave, excited by logo
+          let y = baseY
+            + Math.sin(x * FREQ * exciteFreqMult + phase + r * 0.55) * BASE_AMP * exciteAmp
+            + Math.sin(x * FREQ * 2.3 + phase * 1.7 + r * 1.1) * logoExcite * 12
+            + Math.sin(x * FREQ * 0.5 - phase * 0.8 + r * 0.3) * logoExcite * 14
+            + Math.sin(x * FREQ * 4.7 + phase * 3.2 - r * 0.9) * logoExcite * 7
+            + excitePhaseOffset * Math.sin(x * 0.01 + r * 0.5);
 
           if (fadeOut > 0 && smooth.x > -100) {
             const dx = x - smooth.x;
@@ -325,22 +338,25 @@
         ctx.stroke();
       }
 
-      phase += PHASE_SPEED;
-      ripplePhase += 0.08;
+      phase += PHASE_SPEED + logoExcite * 0.06;
+      ripplePhase += 0.08 + logoExcite * 0.1;
       requestAnimationFrame(draw);
     }
 
-    draw();
+    // Logo excite state
+    let logoExcite = 0;
+    let logoActive = false;
 
-    // Logo hover/tap — inverts entire page including background
     const logo = document.getElementById('site-logo');
+    const setLogoActive = (on) => { logoActive = on; };
 
-    logo.addEventListener('mouseenter', () => document.documentElement.classList.add('logo-active'));
-    logo.addEventListener('mouseleave', () => document.documentElement.classList.remove('logo-active'));
+    logo.addEventListener('mouseenter', () => setLogoActive(true));
+    logo.addEventListener('mouseleave', () => setLogoActive(false));
+    logo.addEventListener('touchstart', () => setLogoActive(true), { passive: true });
+    logo.addEventListener('touchend',   () => setLogoActive(false));
+    logo.addEventListener('touchcancel',() => setLogoActive(false));
 
-    logo.addEventListener('touchstart', () => document.documentElement.classList.add('logo-active'), { passive: true });
-    logo.addEventListener('touchend', () => document.documentElement.classList.remove('logo-active'));
-    logo.addEventListener('touchcancel', () => document.documentElement.classList.remove('logo-active'));
+    draw();
   </script>
 
 </body>
