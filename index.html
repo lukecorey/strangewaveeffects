@@ -34,10 +34,6 @@
     html {
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-      transition: filter 0.35s ease;
-    }
-    html.logo-active {
-      filter: invert(1);
     }
     body {
       min-height: 100dvh;
@@ -45,6 +41,10 @@
       color: var(--color-text);
       background-color: var(--color-bg);
       overflow-x: hidden;
+      transition: background-color 0.35s ease;
+    }
+    html.logo-active body {
+      background-color: #ffffff;
     }
 
     p { text-wrap: pretty; }
