@@ -124,10 +124,9 @@
       width: 1px;
       background: repeating-linear-gradient(
         to bottom,
-        var(--color-navy) 0px, var(--color-navy) 8px,
+        rgba(234, 59, 1, 0.35) 0px, rgba(234, 59, 1, 0.35) 8px,
         transparent 8px, transparent 14px
       );
-      opacity: 0.5;
     }
 
     .circuit-dot {
@@ -195,9 +194,25 @@
   <div class="page">
     <main>
       <div class="circuit-line" aria-hidden="true"></div>
-      <div class="circuit-dot top" aria-hidden="true"></div>
-      <div class="circuit-dot mid" aria-hidden="true"></div>
-      <div class="circuit-dot bot" aria-hidden="true"></div>
+      <!-- Diode (top) — cathode bar at top, triangle pointing down, cathode bar at bottom -->
+      <svg aria-hidden="true" style="position:absolute;right:calc(var(--space-8) - 11px);top:calc(var(--space-16) - 10px);width:22px;height:20px;overflow:visible;" viewBox="-11 0 22 20" xmlns="http://www.w3.org/2000/svg">
+        <line x1="-10" y1="0"  x2="10" y2="0"  stroke="#ea3b01" stroke-width="1.5"/>
+        <polygon points="-10,0 10,0 0,16" fill="#ea3b01" opacity="0.75"/>
+        <line x1="-10" y1="16" x2="10" y2="16" stroke="#ea3b01" stroke-width="1.5"/>
+      </svg>
+
+      <!-- Capacitor (mid) — two parallel plates -->
+      <svg aria-hidden="true" style="position:absolute;right:calc(var(--space-8) - 11px);top:50%;transform:translateY(-50%);width:22px;height:10px;overflow:visible;" viewBox="-11 -5 22 10" xmlns="http://www.w3.org/2000/svg">
+        <line x1="-10" y1="-3" x2="10" y2="-3" stroke="#ea3b01" stroke-width="1.8"/>
+        <line x1="-10" y1="3"  x2="10" y2="3"  stroke="#ea3b01" stroke-width="1.8"/>
+      </svg>
+
+      <!-- Ground (bottom) — three descending lines -->
+      <svg aria-hidden="true" style="position:absolute;right:calc(var(--space-8) - 11px);bottom:calc(var(--space-16) - 10px);width:22px;height:18px;overflow:visible;" viewBox="-11 0 22 18" xmlns="http://www.w3.org/2000/svg">
+        <line x1="-10" y1="0" x2="10" y2="0"  stroke="#ea3b01" stroke-width="1.5"/>
+        <line x1="-7"  y1="6" x2="7"  y2="6"  stroke="#ea3b01" stroke-width="1.5"/>
+        <line x1="-4"  y1="12" x2="4" y2="12" stroke="#ea3b01" stroke-width="1.5"/>
+      </svg>
 
       <p class="hero-body">Effects Pedals Handmade In Newcastle, NSW</p>
 
